@@ -96,3 +96,22 @@ document.querySelectorAll('.publication-item, .teaching-card, .info-card').forEa
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
 });
+
+// Mapa interativo com Leaflet (UBI - Covilhã)
+if (typeof L !== 'undefined') {
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+        const ubiCoords = [40.277859, -7.508983];
+        const map = L.map('map').setView(ubiCoords, 16);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker(ubiCoords)
+            .addTo(map)
+            .bindPopup('UBI - Covilhã')
+            .openPopup();
+    }
+}

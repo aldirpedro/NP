@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="nunco.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS para mapa interativo -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
 </head>
 <body>
     <!-- Menu de Navegação -->
@@ -16,6 +23,8 @@
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
+                <li><a href="#competências">competencias</a></li>
+                <li><a href="#experiência">experiência</a></li>
                 <li><a href="#publications">Publicações</a></li>
                 <li><a href="#teaching">Ensino</a></li>
                 <li><a href="#contact">Contacto</a></li>
@@ -45,7 +54,7 @@
                 <div class="hero-image">
                     <div class="image-placeholder">
                         <!-- Substituir por sua foto -->
-                        <i class="fas fa-user-circle"></i>
+                        <img src="images.jpg" alt="Nuno Pombo" class="hero-photo">
                     </div>
                 </div>
             </div>
@@ -140,7 +149,7 @@
             </div>
             
             <div class="section-footer">
-                <a href="#" class="btn-link">Ver todas as publicações <i class="fas fa-arrow-right"></i></a>
+                <a href="https://scholar.google.pt/citations?user=ZoDigNsAAAAJ&hl=pt-PT" class="btn-link">Ver todas as publicações <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -224,11 +233,7 @@
                 </div>
                 
                 <div class="contact-map">
-                    <div class="map-placeholder">
-                        <!-- Aqui pode adicionar um mapa do Google -->
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>UBI - Covilhã</p>
-                    </div>
+                    <div id="map" class="map-placeholder"></div>
                 </div>
             </div>
         </div>
@@ -238,10 +243,15 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Nuno Pombo. Todos os direitos reservados.</p>
-            <p>Website desenvolvido com HTML, CSS e JavaScript</p>
         </div>
     </footer>
 
+    <!-- Leaflet JS para mapa interativo -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
     <script src="script.js"></script>
 </body>
 </html>
