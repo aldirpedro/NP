@@ -115,3 +115,62 @@ if (typeof L !== 'undefined') {
             .openPopup();
     }
 }
+
+// Carrossel automático de destaques
+(function() {
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (!carouselWrapper || carouselItems.length === 0) return;
+    
+    let currentSlide = 0;
+    const totalSlides = carouselItems.length;
+    const slideInterval = 5000; // 5 segundos entre slides
+    
+    // Função para atualizar o slide
+    function updateSlide(index) {
+        // Remove active de todos os slides e indicadores
+        carouselItems.forEach(item => item.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Adiciona active ao slide atual
+        carouselItems[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        // Move o carrossel
+        carouselWrapper.style.transform = `translateX(-${index * 100}%)`;
+        
+        currentSlide = index;
+    }
+    
+    // Função para próximo slide
+    function nextSlide() {
+        const next = (currentSlide + 1) % totalSlides;
+        updateSlide(next);
+    }
+    
+    // Iniciar carrossel automático
+    let autoSlide = setInterval(nextSlide, slideInterval);
+    
+    // Adicionar eventos aos indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            clearInterval(autoSlide);
+            updateSlide(index);
+            autoSlide = setInterval(nextSlide, slideInterval);
+        });
+    });
+    
+    // Pausar carrossel ao passar o rato
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(nextSlide, slideInterval);
+        });
+    }
+})();
