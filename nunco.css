@@ -10,11 +10,17 @@
     --secondary-color: #3498db;
     --accent-color: #e74c3c;
     --text-color: #333;
+    --text-primary: #333;
+    --text-secondary: #7f8c8d;
     --light-gray: #f5f5f5;
+    --bg-light: #f5f5f5;
     --medium-gray: #e0e0e0;
+    --border-color: #e0e0e0;
     --dark-gray: #7f8c8d;
     --white: #ffffff;
+    --border-radius: 10px;
     --shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow-sm: 0 1px 5px rgba(0,0,0,0.08);
     --transition: all 0.3s ease;
 }
 
@@ -27,6 +33,8 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--white);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .container {
@@ -130,10 +138,17 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-profile {
+    padding: 4rem 0;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    padding-top: 80px;
+    min-height: calc(100vh - 500px);
 }
 
 .hero-content {
@@ -264,15 +279,20 @@ body {
 }
 
 /* Highlights Section - Carrossel Automático */
-.highlights {
-    background-color: #222;
+.highlights-carousel {
+    width: 100%;
     padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .carousel-wrapper {
@@ -283,7 +303,7 @@ body {
 
 .highlight-card {
     position: relative;
-    min-height: 400px;
+    min-height: 500px;
     width: 100%;
     flex-shrink: 0;
     color: var(--white);
@@ -293,14 +313,18 @@ body {
     justify-content: center;
     text-align: center;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
     padding: 4rem 2rem;
+    margin: 0;
 }
 
 .highlight-card > .container {
     position: relative;
     z-index: 1;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
 }
